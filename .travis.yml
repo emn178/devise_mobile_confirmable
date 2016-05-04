@@ -10,4 +10,3 @@ branches:
     - master
 env:
   - COVERALLS=1
-(cd spec/dummy/ && RAILS_ENV=test bundle exec rake db:migrate)
