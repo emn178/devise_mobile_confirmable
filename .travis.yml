@@ -4,11 +4,10 @@ rvm:
   - 2.2.4
   - 2.1.9
 before_install: gem install bundler -v 1.10.6
-before_script: 
-  - RAILS_ENV=test bundle exec rake db:create
-  - RAILS_ENV=test bundle exec rake db:migrate
+before_script: (cd spec/dummy/ && RAILS_ENV=test bundle exec rake db:migrate)
 branches:
   only:
     - master
 env:
   - COVERALLS=1
+(cd spec/dummy/ && RAILS_ENV=test bundle exec rake db:migrate)
