@@ -27,7 +27,7 @@ Run the following generator to add DeviseMobileConfirmable's configuration optio
 
 ## Requirements
 
-[devise](https://github.com/plataformatec/devise)
+[devise](https://github.com/plataformatec/devise)  
 [SMS Carrier](https://github.com/emn178/sms_carrier)
 
 ## Usage
@@ -35,18 +35,43 @@ Add DeviseMobileConfirmable to your Devise models using the following generator:
 
     rails g devise_mobile_confirmable MODEL
 
-You can use following methods:
+For example
+
+    rails g devise_mobile_confirmable user
+
+And you can use following methods:
 ```Ruby
-user.mobile_confirmed? # true if confirmed
-user.change_mobile '+86987654321' # send SMS with token to user
+user.mobile_confirmed?             # true if confirmed
+user.change_mobile '+886987654321' # send SMS with token to user
 user.confirm_mobile_token '123456' # user input the token and confirm his mobile phone
-user.seconds_to_unlock_mobile_confirmation_token # return how many seconds to enable next SMS request
+user.mobile                        # eg. '+886987654321'
+
+# return how many seconds to enable next SMS request, equal or less than 0 will unlock
+user.seconds_to_unlock_mobile_confirmation_token
 ```
-You can overwrite token generating method
+You can overwrite token generating method, in model class:
 ```Ruby
 def generate_mobile_confirmation_token
   # return your token
 end
+```
+
+## Configuration
+You can set options in devise.rb
+```Ruby
+  # ==> Configuration for :mobile_confirmable
+  # Specify mobile field in table.
+  # Default: :mobile
+  # config.mobile_field = :mobile
+
+  # Prevent too many requests for sending token by SMS.
+  # Default: 60.seconds
+  # config.throttle_mobile_confirmation_token = 60.seconds
+
+  # Expire token if too many retries. This is for preventing from brute force attack. 
+  # Set to 0 to disable this feature.
+  # Default: 3
+  # config.max_mobile_confirmation_failure = 3
 ```
 
 ## License
