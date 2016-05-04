@@ -1,0 +1,8 @@
+en:
+  errors:
+    messages:
+      indifferent: is indifferent
+      retry_later: Please retry later
+  devise:
+    carrier:
+      mobile_confirmation_token: Your token is %{token}
