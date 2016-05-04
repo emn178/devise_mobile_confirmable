@@ -35,6 +35,7 @@ module Devise
         end
         self.mobile = unconfirmed_mobile
         self.unconfirmed_mobile = nil
+        self.mobile_confirmation_token = nil
         self.mobile_confirmed_at = Time.now
         self.mobile_confirmation_failure = 0
         save

@@ -21,7 +21,7 @@ class DeviseMobileConfirmableAddToUsers < ActiveRecord::Migration
       t.string     :mobile_confirmation_token
       t.datetime   :mobile_confirmed_at
       t.datetime   :mobile_confirmation_sent_at
-      t.integer    :mobile_confirmation_failure
+      t.integer    :mobile_confirmation_failure, default: 0, null: false
     end
     # remove unique: true if it's allowed
     add_index :users, :mobile, unique: true

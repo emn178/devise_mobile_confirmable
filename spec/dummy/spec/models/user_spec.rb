@@ -128,6 +128,7 @@ describe User, type: :model do
           its(field) { should eq mobile }
           its(:mobile_confirmed_at) { should eq now }
           its(:mobile_confirmation_failure) { should eq 0 }
+          its(:mobile_confirmation_token) { should eq nil }
         end
 
         context 'when token is blank' do

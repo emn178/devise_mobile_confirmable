@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160504060241) do
     t.string   "mobile_confirmation_token"
     t.datetime "mobile_confirmed_at"
     t.datetime "mobile_confirmation_sent_at"
-    t.integer  "mobile_confirmation_failure"
+    t.integer  "mobile_confirmation_failure", default: 0,  null: false
     t.string   "phone"
   end
 
